@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Development Index (HDI) Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>HDI Predictor</h1>
+        <p class="subtitle">Machine Learning model to predict a country's Human Development Index</p>
+    </header>
+
+    <div class="container">
+        <!-- Input Form -->
+        <div class="glass-card">
+            <h2>Enter Country Indicators</h2>
+            <form action="/predict" method="POST" style="margin-top: 1.5rem;">
+                <div class="form-group">
+                    <label for="life_expectancy">Life Expectancy (Years)</label>
+                    <input type="number" step="0.1" name="life_expectancy" id="life_expectancy" required 
+                           placeholder="e.g., 72.5" value="{{ life_exp if life_exp else '' }}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mean_schooling">Mean Years of Schooling</label>
+                    <input type="number" step="0.1" name="mean_schooling" id="mean_schooling" required 
+                           placeholder="e.g., 8.5" value="{{ mean_school if mean_school else '' }}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="expected_schooling">Expected Years of Schooling</label>
+                    <input type="number" step="0.1" name="expected_schooling" id="expected_schooling" required 
+                           placeholder="e.g., 13.2" value="{{ exp_school if exp_school else '' }}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="gni_per_capita">Gross National Income (GNI) Per Capita</label>
+                    <input type="number" step="1" name="gni_per_capita" id="gni_per_capita" required 
+                           placeholder="e.g., 15000" value="{{ gni if gni else '' }}">
+                </div>
+                
+                <button type="submit" class="submit-btn">Predict HDI Score</button>
+            </form>
+        </div>
+
+        <!-- Prediction Result -->
+        <div class="glass-card result-card">
+            <h2>Prediction Result</h2>
+            {% if prediction %}
+                {% if category %}
+                    <div class="score-circle">{{ prediction }}</div>
+                    <p>Development Category:</p>
+                    <h3 class="category {{ category }}">{{ category }}</h3>
+                    <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.9rem;">
+                        This prediction is based on the trained Linear Regression model using the provided indicators.
+                    </p>
+                {% else %}
+                    <p style="color: #f87171; margin-top: 2rem;">{{ prediction }}</p>
+                {% endif %}
+            {% else %}
+                <div style="opacity: 0.5; margin-top: 3rem;">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <p style="margin-top: 1rem;">Enter indicators and click predict</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- EDA Visualizations section -->
+    <div class="visualizations">
+        <h2>Data Insights & Visualizations</h2>
+        <div class="plots-grid">
+            <div class="plot-item">
+                <h3>Feature Distributions</h3>
+                <img src="{{ url_for('static', filename='distribution_plots.png') }}" alt="Distribution Plots" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMzAwIDIwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM3NzciIHRleHQtYW5jaG9yPSJtaWRkbGUiPlBsb3QgdW5hdmFpbGFibGU8L3RleHQ+PC9zdmc+';">
+            </div>
+            <div class="plot-item">
+                <h3>Correlation Matrix</h3>
+                <img src="{{ url_for('static', filename='correlation_heatmap.png') }}" alt="Correlation Heatmap" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMzAwIDIwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM3NzciIHRleHQtYW5jaG9yPSJtaWRkbGUiPlBsb3QgdW5hdmFpbGFibGU8L3RleHQ+PC9zdmc+';">
+            </div>
+            <div class="plot-item">
+                <h3>GNI vs HDI Score</h3>
+                <img src="{{ url_for('static', filename='scatter_gni_hdi.png') }}" alt="Scatter Plot" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMzAwIDIwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM3NzciIHRleHQtYW5jaG9yPSJtaWRkbGUiPlBsb3QgdW5hdmFpbGFibGU8L3RleHQ+PC9zdmc+';">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
