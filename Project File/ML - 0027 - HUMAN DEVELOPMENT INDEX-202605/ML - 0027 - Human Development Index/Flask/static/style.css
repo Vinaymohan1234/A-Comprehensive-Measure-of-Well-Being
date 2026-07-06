@@ -1,0 +1,207 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --bg1:#0f172a;
+    --bg2:#1e293b;
+    --card:#ffffff15;
+    --card-border:#ffffff25;
+
+    --primary:#38bdf8;
+    --secondary:#6366f1;
+
+    --text:#ffffff;
+    --text-secondary:#d1d5db;
+
+    --success:#22c55e;
+    --warning:#f59e0b;
+    --danger:#ef4444;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    color:var(--text);
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 40%,#312e81 100%);
+    background-attachment:fixed;
+}
+
+/* Header */
+
+header{
+    text-align:center;
+    padding:40px 20px;
+}
+
+header h1{
+    font-size:3rem;
+    color:#fff;
+}
+
+.subtitle{
+    color:var(--text-secondary);
+    margin-top:10px;
+}
+
+/* Cards */
+
+.glass-card{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:20px;
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    box-shadow:0 10px 35px rgba(0,0,0,.25);
+    color:white;
+}
+
+/* Inputs */
+
+input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:rgba(255,255,255,.12);
+    color:#fff;
+    outline:none;
+    transition:.3s;
+}
+
+input::placeholder{
+    color:#cbd5e1;
+}
+
+input:focus{
+    background:rgba(255,255,255,.18);
+    border:1px solid #38bdf8;
+    box-shadow:0 0 15px rgba(56,189,248,.4);
+}
+
+/* Labels */
+
+label{
+    color:#e2e8f0;
+    font-weight:500;
+}
+
+/* Button */
+
+.submit-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(135deg,#06b6d4,#3b82f6,#6366f1);
+    transition:.3s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 25px rgba(59,130,246,.4);
+}
+
+/* Result Circle */
+
+.score-circle{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:20px auto;
+    font-size:2rem;
+    font-weight:bold;
+    color:white;
+    background:linear-gradient(135deg,#06b6d4,#2563eb);
+    box-shadow:0 10px 30px rgba(37,99,235,.5);
+}
+
+/* Categories */
+
+.category{
+    font-size:1.4rem;
+    margin-top:10px;
+}
+
+.category.Low{
+    color:#ef4444;
+}
+
+.category.Medium{
+    color:#f59e0b;
+}
+
+.category.High{
+    color:#38bdf8;
+}
+
+.category.VeryHigh{
+    color:#22c55e;
+}
+
+/* Visualization Section */
+
+.visualizations{
+    margin:50px auto;
+    width:90%;
+}
+
+.visualizations h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.plot-item{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:18px;
+    padding:20px;
+    backdrop-filter:blur(12px);
+    transition:.3s;
+}
+
+.plot-item:hover{
+    transform:translateY(-6px);
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.plot-item h3{
+    color:white;
+    margin-bottom:15px;
+}
+
+.plot-item img{
+    width: 70%;
+    border-radius:12px;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#1e293b;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#38bdf8;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#2563eb;
+}
