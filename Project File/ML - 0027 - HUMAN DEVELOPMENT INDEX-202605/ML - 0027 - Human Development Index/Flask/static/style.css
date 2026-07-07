@@ -1,0 +1,457 @@
+/* ==========================================
+   Global
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    background:#f4f7fb;
+    color:#333;
+    min-height:100vh;
+}
+
+a{
+    text-decoration:none;
+}
+
+/* ==========================================
+   Navbar
+========================================== */
+
+.hdi-navbar{
+    background:linear-gradient(90deg,#0f4c81,#2563eb);
+}
+
+.navbar-brand{
+    font-size:1.4rem;
+}
+
+.nav-link{
+    color:white !important;
+    transition:.3s;
+}
+
+.nav-link:hover{
+    color:#ffd54f !important;
+}
+
+/* ==========================================
+   Hero / Landing
+========================================== */
+
+.hero{
+    background: linear-gradient(90deg,#123c7a 0%, #2563eb 60%, #2b6ce6 100%);
+    color: #fff;
+    padding: 80px 0 60px 0;
+}
+.hero .hero-icon{
+    font-size:48px;
+    display:block;
+    margin:0 auto 20px;
+}
+.hero .hero-title{
+    font-size:3rem;
+    font-weight:800;
+    line-height:1.05;
+}
+.hero .hero-sub{
+    opacity:0.95;
+    margin-top:18px;
+    margin-bottom:28px;
+    color:rgba(255,255,255,0.95);
+}
+.btn-hero{
+    background:#ffffff;
+    color:#1e3a8a;
+    padding:12px 28px;
+    border-radius:10px;
+    box-shadow:0 8px 24px rgba(2,6,23,0.12);
+    font-weight:700;
+}
+.btn-hero:hover{
+    transform:translateY(-2px);
+}
+
+/* page content spacing */
+.section-pad{
+    padding:60px 0;
+}
+
+/* ==========================================
+   Page Header
+========================================== */
+
+.page-header{
+    background:linear-gradient(135deg,#2563eb,#1e40af);
+    color:white;
+}
+
+.page-header h2{
+    font-weight:700;
+}
+
+/* ==========================================
+   Cards
+========================================== */
+
+.predict-card,
+.result-card,
+.glass-card{
+
+    background:white;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.predict-card:hover,
+.result-card:hover{
+    transform:translateY(-3px);
+    transition:.3s;
+}
+
+/* ==========================================
+   Forms
+========================================== */
+
+.form-label{
+    font-weight:600;
+}
+
+.form-control,
+.form-select{
+
+    border-radius:12px;
+    padding:14px;
+    border:1px solid #d1d5db;
+    transition:.3s;
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:#2563eb;
+    box-shadow:0 0 8px rgba(37,99,235,.2);
+}
+
+.form-text{
+    color:#6b7280;
+}
+
+/* ==========================================
+   Buttons
+========================================== */
+
+.btn-primary,
+.submit-btn{
+
+    background:#2563eb;
+    border:none;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.btn-primary:hover,
+.submit-btn:hover{
+
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+.btn-outline-secondary{
+
+    border-radius:12px;
+}
+
+/* ==========================================
+   Result Badge
+========================================== */
+
+.result-badge{
+
+    border-radius:15px;
+    text-align:center;
+}
+
+/* ==========================================
+   HDI Score
+========================================== */
+
+.hdi-score-display{
+
+    font-size:4rem;
+    font-weight:700;
+}
+
+.score-circle{
+
+    width:170px;
+    height:170px;
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:2.5rem;
+    font-weight:bold;
+
+    background:linear-gradient(135deg,#2563eb,#1e40af);
+    color:white;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
+}
+
+/* ==========================================
+   Categories
+========================================== */
+
+.category{
+
+    padding:10px 25px;
+    display:inline-block;
+    border-radius:30px;
+    color:white;
+    font-weight:600;
+}
+
+.category.low{
+    background:#dc2626;
+}
+
+.category.medium{
+    background:#f59e0b;
+}
+
+.category.high{
+    background:#2563eb;
+}
+
+.category.very-high{
+    background:#16a34a;
+}
+
+/* HDI badge classes (mapped from server-side) */
+.hdi-very-high{
+    background:#1e40af;
+    color: #ffffff;
+}
+.hdi-very-high-text{
+    color:#1e40af;
+}
+.hdi-very-high-bar{
+    background:#1e40af;
+}
+
+.hdi-high{
+    background:#2563eb;
+    color:#ffffff;
+}
+.hdi-high-text{
+    color:#2563eb;
+}
+.hdi-high-bar{
+    background:#2563eb;
+}
+
+.hdi-medium{
+    background:#d97706;
+    color:#ffffff;
+}
+.hdi-medium-text{
+    color:#d97706;
+}
+.hdi-medium-bar{
+    background:#d97706;
+}
+
+.hdi-low{
+    background:#dc2626;
+    color:#ffffff;
+}
+.hdi-low-text{
+    color:#dc2626;
+}
+.hdi-low-bar{
+    background:#dc2626;
+}
+
+/* ==========================================
+   Progress
+========================================== */
+
+.progress{
+
+    background:#e5e7eb;
+    border-radius:30px;
+}
+
+.score-bar{
+
+    transition:width 1.5s ease;
+}
+
+/* ==========================================
+   Tier Boxes
+========================================== */
+
+.tier-reference{
+
+    background:#f8fafc;
+}
+
+.tier-box{
+
+    border:2px solid;
+    border-radius:10px;
+    padding:12px;
+    transition:.3s;
+}
+
+.tier-box:hover{
+
+    transform:translateY(-3px);
+}
+
+/* ==========================================
+   Table
+========================================== */
+
+.input-table td{
+
+    padding:10px;
+    border-bottom:1px solid #eee;
+}
+
+/* ==========================================
+   Visualizations
+========================================== */
+
+.visualizations{
+
+    width:90%;
+    max-width:1300px;
+    margin:60px auto;
+}
+
+.visualizations h2{
+
+    text-align:center;
+    margin-bottom:35px;
+    color:#1e3a8a;
+}
+
+.plots-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.plot-item{
+
+    background:white;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    padding:20px;
+    text-align:center;
+}
+
+.plot-item img{
+
+    width:100%;
+    border-radius:12px;
+}
+
+/* ==========================================
+   Home Container
+========================================== */
+
+.container{
+
+    margin-top:40px;
+}
+
+.subtitle{
+
+    opacity:.9;
+}
+
+/* ==========================================
+   Footer
+========================================== */
+
+.hdi-footer{
+
+    background:#1e293b;
+    margin-top:60px;
+}
+
+/* ==========================================
+   Animation
+========================================== */
+
+.animate-in{
+
+    animation:fadeIn .8s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media(max-width:768px){
+
+.hdi-score-display{
+
+    font-size:3rem;
+}
+
+.score-circle{
+
+    width:140px;
+    height:140px;
+    font-size:2rem;
+}
+
+.page-header h2{
+
+    font-size:1.8rem;
+}
+
+.predict-card,
+.result-card{
+
+    padding:25px;
+}
+
+.plots-grid{
+
+    grid-template-columns:1fr;
+}
+
+}
